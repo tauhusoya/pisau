@@ -22,19 +22,19 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-# Copy composer files first for better caching
+# Copy composer files first
 COPY composer.json composer.lock ./
 
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# Install PHP dependencies with verbose output
+RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist --verbose
 
-# Copy package files for Node.js
+# Copy package files
 COPY package.json package-lock.json ./
 
 # Install Node.js dependencies
 RUN npm ci
 
-# Copy application files
+# Copy all application files
 COPY . .
 
 # Build React assets
