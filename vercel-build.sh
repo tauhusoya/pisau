@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 set -e
 
-# Install dependencies
-composer install --no-dev --optimize-autoloader
+# Install PHP dependencies
+composer install --no-dev --optimize-autoloader --no-interaction
+
+# Install Node.js dependencies and build
 npm ci
 npm run build
 
-# Create database
+# Create database directory
 mkdir -p database
 touch database/database.sqlite
 

@@ -2,7 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "vercel-build": "npm run build && composer install --no-dev --optimize-autoloader"
     },
     "devDependencies": {
         "@headlessui/react": "^1.4.2",
