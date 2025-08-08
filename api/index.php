@@ -1,8 +1,11 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+// Set the working directory to the Laravel root
+chdir(__DIR__ . '/..');
 
-$app = require_once __DIR__ . '/../bootstrap/app.php';
+require_once 'vendor/autoload.php';
+
+$app = require_once 'bootstrap/app.php';
 
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
