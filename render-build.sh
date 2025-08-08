@@ -2,17 +2,12 @@
 # exit on error
 set -o errexit
 
-# Install PHP and Composer
-curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
-
-# Install PHP extensions (if needed)
-# apt-get update && apt-get install -y php-sqlite3 php-mbstring php-xml php-curl
-
-# Install dependencies
-composer install --no-dev --optimize-autoloader
+# Install Node.js dependencies and build React
 npm ci
 npm run build
+
+# Install PHP dependencies
+composer install --no-dev --optimize-autoloader
 
 # Create database directory and file
 mkdir -p database
